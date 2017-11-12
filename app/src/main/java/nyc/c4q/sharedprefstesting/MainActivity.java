@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -59,9 +60,13 @@ public class MainActivity extends AppCompatActivity {
 
                 if (username.getText().toString().equalsIgnoreCase(login.getString(checkUser, null))
                         && password.getText().toString().equals(login.getString(checkPassword, null))) {
+                    Toast.makeText(getApplicationContext(), "Successful login", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(MainActivity.this, SecondActivity.class);
                     intent.putExtra("currentUser", username.getText().toString());
                     startActivity(intent);
+                }
+                else {
+                   Toast.makeText(getApplicationContext(), "Your username/password is incorrect. Please try again.", Toast.LENGTH_SHORT).show();
                 }
 
             }
